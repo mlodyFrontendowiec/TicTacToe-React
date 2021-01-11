@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 500px;
+  height: 500px;
+  gap: 10px;
+}
+.cell {
+  background-color: cadetblue;
+  cursor: pointer;
+}

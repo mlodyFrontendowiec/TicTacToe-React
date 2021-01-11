@@ -1,15 +1,8 @@
 import React, { useState } from "react";
 import GameBoard from "./GameBoard";
-
-const initialTable = [
-  ["", "", ""],
-  ["", "", ""],
-  ["", "", ""],
-];
+import "./style.css";
 
 const App = () => {
-  const [table, setTable] = useState(initialTable);
-
   return (
     <>
       <GameBoard />
