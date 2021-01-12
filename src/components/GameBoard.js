@@ -13,6 +13,7 @@ const GameBoard = () => {
   useEffect(() => {
     const winner = checkWin();
     setWinner(winner);
+    console.log(winner);
   }, [table]);
 
   const handleClick = (id) => {
@@ -53,8 +54,15 @@ const GameBoard = () => {
     ));
     return tableLayout;
   };
+  const layout = !winner && createTable();
+  const popup = winner && <div>Wygrał {winner}</div>;
 
-  return <div className="container">{createTable()}</div>;
+  return (
+    <div className="container">
+      {layout}
+      {popup}
+    </div>
+  );
 };
 
 export default GameBoard;
