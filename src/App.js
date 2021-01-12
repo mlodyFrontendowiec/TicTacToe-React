@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import GameBoard from "./GameBoard";
+import GameBoard from "./components/GameBoard";
 import "./style.css";
 
 const App = () => {
