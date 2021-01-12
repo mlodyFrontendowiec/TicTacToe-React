@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Cell from "./Cell";
+import Popup from "./Popup";
 
 const GameBoard = () => {
   const [table, setTable] = useState(Array(9).fill(""));
   const [char, setChar] = useState("O");
   const [winner, setWinner] = useState(null);
+  const [draw, setDraw] = useState(false);
 
   const changeChar = () => {
     if (char === "O") setChar("X");
@@ -13,8 +15,10 @@ const GameBoard = () => {
   useEffect(() => {
     const winner = checkWin();
     setWinner(winner);
-    console.log(winner);
-  }, [table]);
+    if (!table.includes("")) {
+      setDraw(true);
+    }
+  }, [char]);
 
   const handleClick = (id) => {
     const newTable = table.map((item, index) => {
@@ -28,6 +32,7 @@ const GameBoard = () => {
 
     setTable(newTable);
   };
+
   const checkWin = () => {
     const lines = [
       [0, 1, 2],
@@ -54,13 +59,21 @@ const GameBoard = () => {
     ));
     return tableLayout;
   };
-  const layout = !winner && createTable();
-  const popup = winner && <div>Wygrał {winner}</div>;
+  const newGame = () => {
+    setTable(Array(9).fill(""));
+    setChar("O");
+    setWinner(null);
+    setDraw(false);
+  };
+  const layout = !(winner || draw) && createTable();
+  const popup = (winner || draw) && (
+    <Popup draw={draw} winner={winner} click={newGame} />
+  );
 
   return (
     <div className="container">
-      {layout}
       {popup}
+      {layout}
     </div>
   );
 };

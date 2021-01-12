@@ -1,13 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 * {
   margin: 0;
   padding: 0;
+  user-select: none;
+  font-family: "Roboto", sans-serif;
+}
+p {
+  user-select: none;
 }
 .container {
   margin: 20px auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 450px;
-
   gap: 10px;
 }
 .cell {
@@ -22,6 +28,22 @@
   width: 150px;
   height: 150px;
 }
-p {
-  user-select: none;
+.winner {
+  width: 450px;
+  height: 450px;
+  color: cadetblue;
+  font-size: 40px;
+  border: 2px solid cadetblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.winner__button {
+  padding: 7px 10px;
+  font-size: 15px;
+  border: 2px solid cadetblue;
+  background-color: cadetblue;
+  color: white;
+  cursor: pointer;
 }
